@@ -1,0 +1,233 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+    /*
+    
+    ═══════════════════════════════════════════Instrucciones para logo ASCII═════════════════════════════════════════════════
+
+    "logo": {
+        "type": "auto",
+	    "source": "cachyos",	//Nombre o ruta del archivo del logo
+	    "width": 1,		        //Ancho del logo
+	    "height": 1,	        //Alto del logo
+        "padding": {
+	        "top": 0,		    //Relleno superior
+	        "left": 0,		    //Relleno izquierdo
+	        "right": 2		    //Relleno derecho
+        },
+	    "color": {		        //Colores con los que se mostrara el logo
+            "1": "magenta",
+            "2": "cyan"
+        },
+    },
+    
+    ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════  
+    */
+
+    /*
+
+    ═══════════════════════════════════════════Instrucciones para logo IMAGEN═════════════════════════════════════════════════
+
+    */
+
+    "logo": {
+        "source": "/home/$USER/.config/fastfetch/Img-fast/4.png",                  //Nombre o ruta del archivo del logo
+
+    /*
+
+    /*
+        ⚠ Nota: Lo unico que se debe cambiar/remplazar es "1.png" por la imagen que quieres que se muestre puedes cambiar la rutra por ejemplo: "/home/$USER/Imagenes/imagen.png" pero ⤵
+        ↪ es bajo tu responsabilidad que pueda no llegar a mostrarse la imagen o que las rutas fallen, aun así no tengas miedo de hacerlo si quieres probar mover este codigo y en caso de ⤵
+        ↪ de tener un fallo la ruta original es: "/home/$USER/.config/fastfetch/Img-fast/1.png" siempre puedes volverla a copiar.
+    /*
+
+    /*
+    ═══════════════════════════════════════════Posible errores y soluciones═════════════════════════════════════════════════
+
+        ⚠ Nota: El renderizado puede fallar haciendo que las imagenes no se muestren y puede haber errores con los demas configs mostrando graficamente mal ⤵
+        ↪ muestro una posible solución pero se pueden mostrar mas errores con el renderizado, segun sea el caso lo mejor es buscar el caso segun la terminal ⤵
+        ↪ yo muesto una posible solucion para kitty
+
+    ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════  
+    */
+
+	      "type": "kitty",                      //Renderizado grafico - ⚠ Si "kitty-direct" no funciona ocupar "kitty", "kitty-icat" o "auto" como renderizado grafico ⚠
+	      "width": 35,		                    //Ancho del logo
+	      "height": 20	                        //Alto del logo
+    },
+
+    /*
+
+    ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    
+    */
+
+    "display": {
+        "separator": " -> ",
+        "constants": [
+            "──────────────────────────────"
+        ]
+    },
+
+    /*
+    ═════════════════════════════════════════════════════════Modulos═════════════════════════════════════════════════════════════
+
+    Estos sirven para mostrar informacion o decoracion dentro de la terminal hay de diferentes tipos como los veras en todo este apartado
+    pero si tu quieres agregar uno la sintaxis seria la siguiente:
+
+    "type": "custom"
+    "format": "{#@32}═══════════════════"
+
+    Ese es un ejemplo muy simple de como poner una barra "══════" en magenta pero puedes poner varias cosas como arte ascii, informacion del
+    sistema o más cosas siempre y cuando uses las etiquetas correctas como "version", "custom", "user", etc.; ademas de que los colores 
+    se pueden poner de varias formas como: {#@32}, {##ff00ff} o {#magenta}. Aqui no puedo mostrarte todo el potencial de los modulos pero 
+    puedes investigar directo en la documentación de fastfetch o en otros proyectos de la comunidad para aprender de mejor manera.
+    
+    */
+
+    "modules": [
+        {
+            "type": "custom",
+            "format": "┌{$1}{$1}┐",
+
+        /*
+        ⚠ Nota IMPORTANTE: En config1.jsonc se habla de la etiqueta de color "keys" y "key" y en config2.jsonc, y config3.jsonc se habla de otra ⤵
+        ↪ en config4.jsonc cambia la manera cambiar y colocar colores siendo que se muestran como: "outputColor: "90"" y no hay una etiqueta "keys" ⤵
+        ↪ universal, siendo que para cambiar el color del elemnto debes cambiar los numeros delante de "outputColor:", los numeros hacen referencia ⤵
+        ↪ al igual que en config2 y 3 es a la tabla de colores ANSI que deberas investigar el numero correspondiente al color que quieras utilizar, ⤵
+        ↪ tambien es importante saber que se muestra: "keyColor": "yellow" o algun deribado que tambien sirven para mostrar colores de los elementos ⤵
+        ↪ de la configuracion los cuales estos puedes cambiarlos con palabras correspondientes al color (blue, yellow, red, etc.).
+        */
+
+            "outputColor": "90"
+        },
+        {
+            "type": "title",
+            "keyWidth": 10
+        },
+        {
+            "type": "custom",
+            "format": "└{$1}{$1}┘",
+            "outputColor": "90"
+        },
+        {
+            "type": "custom",
+            "format": " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39}       {#38}  {#37}  {#36}  {#35}  {#34}  {#33}  {#32}  {#31}  {#90}"
+        },
+        {
+            "type": "custom",
+            "format": "┌{$1}{$1}┐",
+            "outputColor": "90"
+        },
+        {
+            "type": "os",
+            "key": "{icon} OS",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "kernel",
+            "key": "│ ├",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "packages",
+            "key": "│ ├󰏖",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "shell",
+            "key": "│ └",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "wm",
+            "key": " DE/WM",
+            "keyColor": "blue"
+        },
+        {
+            "type": "lm",
+            "key": "│ ├󰧨",
+            "keyColor": "blue"
+        },
+        {
+            "type": "wmtheme",
+            "key": "│ ├󰉼",
+            "keyColor": "blue"
+        },
+        {
+            "type": "icons",
+            "key": "│ ├󰀻",
+            "keyColor": "blue"
+        },
+        {
+            "type": "terminal",
+            "key": "│ ├",
+            "keyColor": "blue"
+        },
+        {
+            "type": "host",
+            "key": "󰌢 PC",
+            "keyColor": "green"
+        },
+        {
+            "type": "cpu",
+            "key": "│ ├󰻠",
+            "keyColor": "green"
+        },
+        {
+            "type": "gpu",
+            "key": "│ ├󰍛",
+            "keyColor": "green"
+        },
+        {
+            "type": "disk",
+            "key": "│ ├",
+            "keyColor": "green"
+        },
+        {
+            "type": "memory",
+            "key": "│ ├󰑭",
+            "keyColor": "green"
+        },
+        {
+            "type": "swap",
+            "key": "│ ├󰓡",
+            "keyColor": "green"
+        },
+        {
+            "type": "uptime",
+            "key": "│ ├󰅐",
+            "keyColor": "green"
+        },
+        {
+            "type": "display",
+            "key": "│ └󰍹",
+            "keyColor": "green"
+        },
+        {
+            "type": "sound",
+            "key": " SND",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "player",
+            "key": "│ ├󰥠",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "media",
+            "key": "│ └󰝚",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "custom",
+            "format": "└{$1}{$1}┘",
+            "outputColor": "90"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39}       {#38}  {#37}  {#36}  {#35}  {#34}  {#33}  {#32}  {#31}  {#90}"
+        }
+    ]
+}

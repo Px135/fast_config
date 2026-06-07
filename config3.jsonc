@@ -1,0 +1,234 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+    /*
+    
+    ═══════════════════════════════════════════Instrucciones para logo ASCII═════════════════════════════════════════════════
+
+    "logo": {
+        "type": "auto",
+	    "source": "cachyos",	//Nombre o ruta del archivo del logo
+	    "width": 1,		        //Ancho del logo
+	    "height": 1,	        //Alto del logo
+        "padding": {
+	        "top": 0,		    //Relleno superior
+	        "left": 0,		    //Relleno izquierdo
+	        "right": 2		    //Relleno derecho
+        },
+	    "color": {		        //Colores con los que se mostrara el logo
+            "1": "magenta",
+            "2": "cyan"
+        },
+    },
+    
+    ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════  
+    */
+
+    /*
+
+    ═══════════════════════════════════════════Instrucciones para logo IMAGEN═════════════════════════════════════════════════
+
+    */
+
+    "logo": {
+        "source": "/home/$USER/.config/fastfetch/Img-fast/3.png",               //Nombre o ruta del archivo del logo
+
+    /*
+
+    /*
+        ⚠ Nota: Lo unico que se debe cambiar/remplazar es "1.png" por la imagen que quieres que se muestre puedes cambiar la rutra por ejemplo: "/home/$USER/Imagenes/imagen.png" pero ⤵
+        ↪ es bajo tu responsabilidad que pueda no llegar a mostrarse la imagen o que las rutas fallen, aun así no tengas miedo de hacerlo si quieres probar mover este codigo y en caso de ⤵
+        ↪ de tener un fallo la ruta original es: "/home/$USER/.config/fastfetch/Img-fast/1.png" siempre puedes volverla a copiar.
+    /*
+
+    /*
+    ═══════════════════════════════════════════Posible errores y soluciones═════════════════════════════════════════════════
+
+        ⚠ Nota: El renderizado puede fallar haciendo que las imagenes no se muestren y puede haber errores con los demas configs mostrando graficamente mal ⤵
+        ↪ muestro una posible solución pero se pueden mostrar mas errores con el renderizado, segun sea el caso lo mejor es buscar el caso segun la terminal ⤵
+        ↪ yo muesto una posible solucion para kitty
+  
+    */
+
+	      "type": "kitty",                      //Renderizado grafico - ⚠ Si "kitty-direct" no funciona ocupar "kitty", "kitty-icat" o "auto" como renderizado grafico ⚠
+	      "width": 35,		                      //Ancho del logo
+	      "height": 20	                        //Alto del logo
+    },
+
+    /*
+
+    ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    
+    */
+
+    "display": {
+      "separator": "",
+      "constants": [
+        /*
+        ═══════════════════Fondo═══════════════════
+        ⚠ Nota: Estos codigos de aqui muestran un fondo funcion de la que se habla en config2.jsonc
+        */
+        "\u001b[48;2;43;43;69m",
+        "\u001b[48;2;56;59;78m",
+        "\u001b[90m│                                                            │\u001b[60D\u001b[39m",
+      ]
+    },
+
+    /*
+    ═════════════════════════════════════════════════════════Modulos═════════════════════════════════════════════════════════════
+
+    Estos sirven para mostrar informacion o decoracion dentro de la terminal hay de diferentes tipos como los veras en todo este apartado
+    pero si tu quieres agregar uno la sintaxis seria la siguiente:
+
+    "type": "custom"
+    "format": "{#@32}═══════════════════"
+
+    Ese es un ejemplo muy simple de como poner una barra "══════" en magenta pero puedes poner varias cosas como arte ascii, informacion del
+    sistema o más cosas siempre y cuando uses las etiquetas correctas como "version", "custom", "user", etc.; ademas de que los colores 
+    se pueden poner de varias formas como: {#@32}, {##ff00ff} o {#magenta}. Aqui no puedo mostrarte todo el potencial de los modulos pero 
+    puedes investigar directo en la documentación de fastfetch o en otros proyectos de la comunidad para aprender de mejor manera.
+    
+    */
+
+    "modules": [
+      {
+        "type": "custom",
+        /*
+        ⚠ Nota IMPORTANTE: En config1.jsonc se habla de la etiqueta de color "keys" y "key" pero en config2.jsonc, config3.jsonc y onfig4.jsonc ⤵
+        ↪ cambia la manera cambiar y colocar colores siendo que se muestran como: "{#35}" y no hay una etiqueta "keys" universal siendo que para ⤵
+        ↪ cambiar el color del elemnto debes cambiar los numeros dentro manteniendo el "#", los numeros hacen referencia a la tabla de colores ⤵
+        ↪ ANSI que deberas investigar el numero correspondiente al color que quieras utilizar.
+        */
+        "key": "{#90}{$1}╭─────────────╮",
+        "format": "{#90}{$2}╭────────────────────────────────────────────────────────────╮",
+      },
+      {
+        "type": "title",
+        "key": "{#90}{$1}│ {#92}User        {#90}│",
+        "format": "{$2}{$3}{user-name}  {#2}[{home-dir}]"
+      },
+      {
+        "type": "users",
+        "key": "{#90}{$1}│ {#92}Users       {#90}│",
+        "myselfOnly": false,
+        "format": "{$2}{$3}{1}@{host-name}{/host-name}localhost{/}{?client-ip}  {#2}[IP:{client-ip}]{?}  [Login time: {login-time}]"
+      },
+      {
+        "type": "datetime",
+        "key": "{#90}{$1}│ {#92}Datetime    {#90}│",
+        "format": "{$2}{$3}{year}-{month-pretty}-{day-in-month} {hour-pretty}:{minute-pretty}:{second-pretty}  [{weekday}] [W{week}] [UTC{offset-from-utc}]"
+      },
+      {
+        "type": "title",
+        "key": "{#90}{$1}│ {#93}Host        {#90}│",
+        "format": "{$2}{$3}{host-name}"
+      },
+      {
+        "type": "host",
+        "key": "{#90}{$1}│ {#93}Machine     {#90}│",
+        "format": "{$2}{$3}{name}  {#2}{version}"
+      },
+      {
+        "type": "os",
+        "key": "{#90}{$1}│ {#93}OS          {#90}│",
+        "format": "{$2}{$3}{?pretty-name}{pretty-name}{?}{/pretty-name}{name}{/} {codename}  {#2}[v{version}] [{arch}]"
+      },
+      {
+        "type": "kernel",
+        "key": "{#90}{$1}│ {#93}Kernel      {#90}│",
+        "format": "{$2}{$3}{sysname}  {#2}[v{release}]"
+      },
+      {
+        "type": "uptime",
+        "key": "{#90}{$1}│ {#93}Uptime      {#90}│",
+        "format": "{$2}{$3}{?days}{days} Days + {?}{hours}:{minutes}:{seconds}"
+      },
+      {
+        "type": "cpu",
+        "key": "{#90}{$1}│ {#91}CPU         {#90}│",
+        "showPeCoreCount": true,
+        "temp": true,
+        "format": "{$2}{$3}{name}  {#2}[C:{core-types}] [{freq-max}]"
+      },
+      {
+        "type": "gpu",
+        "key": "{#90}{$1}│ {#91}GPU         {#90}│",
+        "detectionMethod": "auto",
+        "driverSpecific": true,
+        "format": "{$2}{$3}{name}  {#2}[C:{core-count}]{?frequency} [{frequency}]{?} [{type}]"
+      },
+      {
+        "type": "memory",
+        "key": "{#90}{$1}│ {#91}Memory      {#90}│",
+        "format": "{$2}{$3}{used} / {total} ({percentage}{$2})"
+      },
+      {
+        "type": "disk",
+        "key": "{#90}{$1}│ {#91}Disk        {#90}│",
+        "format": "{$2}{$3}{size-used} / {size-total} ({size-percentage}{$2})"
+      },
+      {
+        "type": "poweradapter",
+        "key": "{#90}{$1}│ {#91}Power       {#90}│",
+        "format": "{$2}{$3}{name}"
+      },
+      {
+        "type": "terminal",
+        "key": "{#90}{$1}│ {#95}Terminal    {#90}│",
+        "format": "{$2}{$3}{pretty-name}  {#2}[{version}] [PID:{pid}]"
+      },
+      {
+        "type": "terminalfont",
+        "key": "{#90}{$1}│ {#95}Font        {#90}│",
+        "format": "{$2}{$3}{name}  {#2}[{size}]"
+      },
+      {
+        "type": "shell",
+        "key": "{#90}{$1}│ {#95}Shell       {#90}│",
+        "format": "{$2}{$3}{pretty-name}  {#2}[v{version}] [PID:{pid}]"
+      },
+      
+      /*
+
+      ═══════════════════════════════════════════════Seccion para mostrar IP══════════════════════════════════════════════════════
+
+      {
+        "type": "localip",
+        "key": "{#90}{$1}│ {#94}Local IPv4  {#90}│",
+        "showPrefixLen": true,
+        "showIpv4": true,
+        "showIpv6": false,
+        "showMtu": true,
+        "format": "{$2}{$3}{ifname}: {ipv4}  {#2}[MTU:{mtu}]"
+      },
+      {
+        "type": "localip",
+        "key": "{#90}{$1}│ {#94}Local IPv6  {#90}│",
+        "showPrefixLen": true,
+        "showIpv4": false,
+        "showIpv6": true,
+        "showMtu": true,
+        "format": "{$2}{$3}{ifname}: {ipv6}  {#2}[MTU:{mtu}]"
+      },
+      {
+        "type": "publicip",
+        "key": "{#90}{$1}│ {#94}Public IPv4 {#90}│",
+        "ipv6": false,
+        "format": "{$2}{$3}{ip}  {#2}[{location}]"
+      },
+      {
+        "type": "publicip",
+        "key": "{#90}{$1}│ {#94}Public IPv6 {#90}│",
+        "ipv6": true,
+        "format": "{$2}{$3}{ip}  {#2}[{location}]"
+      },
+
+      */
+
+      {
+        "type": "custom",
+        "key": "{#90}{$1}╰─────────────╯",
+        "format": "{#90}{$2}╰────────────────────────────────────────────────────────────╯",
+      }
+    ]
+  }

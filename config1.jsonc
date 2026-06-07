@@ -1,0 +1,344 @@
+
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+    /*
+    
+    ═══════════════════════════════════════════Instrucciones para logo ASCII═════════════════════════════════════════════════
+
+    "logo": {
+        "type": "auto",
+	    "source": "cachyos",	//Nombre o ruta del archivo del logo
+	    "width": 1,		        //Ancho del logo
+	    "height": 1,	        //Alto del logo
+        "padding": {
+	        "top": 0,		    //Relleno superior
+	        "left": 0,		    //Relleno izquierdo
+	        "right": 2		    //Relleno derecho
+        },
+	    "color": {		        //Colores con los que se mostrara el logo
+            "1": "magenta",
+            "2": "cyan"
+        },
+    },
+    
+    ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════  
+    */
+
+    /*
+
+    ═══════════════════════════════════════════Instrucciones para logo IMAGEN═════════════════════════════════════════════════
+
+    */
+
+    "logo": {
+        "source": "/home/$USER/.config/fastfetch/Img-fast/1.png",               //Nombre o ruta del archivo del logo
+
+    /*
+        ⚠ Nota: Lo unico que se debe cambiar/remplazar es "1.png" por la imagen que quieres que se muestre puedes cambiar la rutra por ejemplo: "/home/$USER/Imagenes/imagen.png" pero ⤵
+        ↪ es bajo tu responsabilidad que pueda no llegar a mostrarse la imagen o que las rutas fallen, aun así no tengas miedo de hacerlo si quieres probar mover este codigo y en caso de ⤵
+        ↪ de tener un fallo la ruta original es: "/home/$USER/.config/fastfetch/Img-fast/1.png" siempre puedes volverla a copiar.
+
+    ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════  
+    /*
+
+    /*
+    ═══════════════════════════════════════════Posible errores y soluciones═════════════════════════════════════════════════
+
+        ⚠ Nota: El renderizado puede fallar haciendo que las imagenes no se muestren y puede haber errores con los demas configs mostrando graficamente mal ⤵
+        ↪ muestro una posible solución pero se pueden mostrar mas errores con el renderizado, segun sea el caso lo mejor es buscar el caso segun la terminal ⤵
+        ↪ yo muesto una posible solucion para kitty
+
+    */
+
+	      "type": "kitty",                      //Renderizado grafico - ⚠ Si "kitty-direct" no funciona ocupar "kitty", "kitty-icat" o "auto" como renderizado grafico ⚠
+	      "width": 35,		                    //Ancho del logo
+	      "height": 20	                        //Alto del logo
+    },
+
+    /*
+
+    ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    
+    */
+
+    "display": {
+        "color": {
+            "keys": "magenta"               //"keys" es el color universal de la decoracion con la misma etiqueta (key) más abajo podras ver un ejemplo
+            /*
+            ⚠ Nota: keys no es un caso universal y si tu al cambiar este por un codigo hexadecimal, una etiqueta diferente o cualquier tipo de modificacion ⤵
+            ↪ más haya del simple hecho de poner "magenta", "green", "blue" o cualquier otro sera bajo tu responsabilidad, nuevamente te invito a que lo hagas ⤵
+            ↪ para que aprendas y siempre podras copiar los archivos o lineas originales del github como medio de respaldo.
+            */
+        },
+        "separator": "",
+
+        "constants": [
+            "──────────────────────────────────────────────",
+            "\u001b[47D",                                   
+            "\u001b[47C",                                   
+            "\u001b[46C",                                   
+            "══════════════════════════════════════════════"
+        ],
+        "brightColor": false
+    },
+
+    /*
+    ═════════════════════════════════════════════════════════Modulos═════════════════════════════════════════════════════════════
+
+    Estos sirven para mostrar informacion o decoracion dentro de la terminal hay de diferentes tipos como los veras en todo este apartado
+    pero si tu quieres agregar uno la sintaxis seria la siguiente:
+
+    "type": "custom"
+    "format": "{#@32}═══════════════════"
+
+    Ese es un ejemplo muy simple de como poner una barra "══════" en magenta pero puedes poner varias cosas como arte ascii, informacion del
+    sistema o más cosas siempre y cuando uses las etiquetas correctas como "version", "custom", "user", etc.; ademas de que los colores 
+    se pueden poner de varias formas como: {#@32}, {##ff00ff} o {#magenta}. Aqui no puedo mostrarte todo el potencial de los modulos pero 
+    puedes investigar directo en la documentación de fastfetch o en otros proyectos de la comunidad para aprender de mejor manera.
+    
+    */
+
+    "modules": [
+        {
+            "type": "version",
+            "key": "╔═══════════════╦═{$5}╗\u001b[41D",         //Esto al tener la etiqueta "key" tomara el color asignado en "keys"
+            "format": "\u001b[1m{#keys} {1} - {2} "
+        },
+        {
+            "type": "os",
+            "key": "║  {icon}  \u001b[s{sysname}\u001b[u\u001b[10C║{$3}║{$2}"
+        },
+        {
+            "type": "datetime",
+            "key": "║  {icon}  Fetched   ║{$3}║{$2}",
+            "format": "{year}-{month-pretty}-{day-pretty} {hour-pretty}:{minute-pretty}:{second-pretty} {timezone-name}"
+        },
+        {
+            "type": "locale",
+            "key": "║  {icon}  Locale    ║{$3}║{$2}"
+        },
+
+        // Información de hardware (Seccion cyan)
+        {
+            "type": "custom",
+            "key": "║{#cyan}┌──────────────┬{$1}┐{#keys}║\u001b[37D",
+            "format": "{#bright_cyan} Hardware "
+        },
+        {
+            "type": "memory",
+            "key": "║{#cyan}│ {icon}  RAM       │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "swap",
+            "key": "║{#cyan}│ {icon}  SWAP      │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "cpu",
+            "key": "║{#cyan}│ {icon}  CPU       │{$4}│{#keys}║{$2}",
+            "showPeCoreCount": true
+        },
+        {
+            "type": "gpu",
+            "key": "║{#cyan}│ {icon}  GPU       │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "disk",
+            "key": "║{#cyan}│ {icon}  Disk      │{$4}│{#keys}║{$2}",
+            "format": "{size-used} \/ {size-total} ({size-percentage}) - {filesystem}",
+        },
+        {
+            "type": "custom",
+            "key": "║{#cyan}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        },
+
+        /* Información sobre el escritorio (seccion verde), descomentar si se quiere usar
+        {
+            "type": "custom",
+            "key": "║{#green}┌──────────────┬{$1}┐{#keys}║\u001b[37D",
+            "format": "{#bright_green} Desktop "
+        },
+        {
+            "type": "de",
+            "key": "║{#green}│ {icon}  Desktop   │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "wm",
+            "key": "║{#green}│ {icon}  Session   │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "display",
+            "key": "║{#green}│ {icon}  Display   │{$4}│{#keys}║{$2}",
+            "compactType": "original-with-refresh-rate"
+        },
+        {
+            "type": "gpu",
+            "key": "║{#green}│ {icon}  G-Driver  │{$4}│{#keys}║{$2}",
+            "format": "{driver}"
+        },
+        {
+            "type": "custom",
+            "key": "║{#green}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        },
+        */
+        // Sección de la terminal
+        {
+            "type": "custom",
+            "key": "║{#yellow}┌──────────────┬{$1}┐{#keys}║\u001b[37D",
+            "format": "{#bright_yellow} Terminal "
+        },
+        {
+            "type": "shell",
+            "key": "║{#yellow}│ {icon}  Shell     │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "terminal",
+            "key": "║{#yellow}│ {icon}  Terminal  │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "terminalfont",
+            "key": "║{#yellow}│ {icon}  Term Font │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "terminaltheme",
+            "key": "║{#yellow}│ {icon}  Colors    │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "packages",
+            "key": "║{#yellow}│ {icon}  Packages  │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "custom",
+            "key": "║{#yellow}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        },
+
+        /* Informacion de desarrollo, descomentar si se quiere usar
+        {
+            "type": "custom",
+            "key": "║{#red}┌──────────────┬{$1}┐{#keys}║\u001b[39D",
+            "format": "{#bright_red} Development "
+        },
+        {
+            "type": "command",
+            "keyIcon": "",                                   // Icono custom
+            "key": "║{#red}│ {icon}  Rust      │{$4}│{#keys}║{$2}",
+            "text": "rustc --version",
+            "format": "rustc {~6,13}"                         // Print 6th to 13th characters (version number)
+        },
+        {
+            "type": "command",
+            "condition": {
+                "!system": "Windows"                          // Posix version
+            },
+            "keyIcon": "",
+            "key": "║{#red}│ {icon}  Clang     │{$4}│{#keys}║{$2}",                            #descomentar*/
+            //"text": "clang --version | sed -n 's/.*version \\([0-9][0-9.]*\\).*/\\1/p'",
+        /*#descomentar    "format": "clang {}"
+        },
+        {
+            "type": "command",
+            "condition": {
+                "system": "Windows"                           // Windows version
+            },
+            "keyIcon": "",
+            "key": "║{#red}│ {icon}  Clang     │{$4}│{#keys}║{$2}",
+            "text": "clang --version | findstr version",      // Finds the line with "version"
+            "format": "clang {~-6}"                           // Prints the last 6 characters (version number)
+        },
+        {
+            "type": "command",
+            "keyIcon": "",
+            "key": "║{#red}│ {icon}  NodeJS    │{$4}│{#keys}║{$2}",
+            "text": "node --version",
+            "format": "node {~1}"                             // {~1} removes first character (v)
+        },
+        {
+            "type": "command",
+            "keyIcon": "",
+            "key": "║{#red}│ {icon}  Go        │{$4}│{#keys}║{$2}",
+            "text": "go version | cut -d' ' -f3",
+            "format": "go {~2}"                               // {~2} removes first 2 characters (go)
+        },
+        {
+            "type": "command",
+            "keyIcon": "",
+            "key": "║{#red}│ {icon}  Zig       │{$4}│{#keys}║{$2}",
+            "text": "zig version",
+            "format": "zig {}"
+        },
+        {
+            "type": "editor",
+            "key": "║{#red}│ {icon}  Editor    │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "command",
+            "keyIcon": "󰊢",
+            "key": "║{#red}│ {icon}  Git       │{$4}│{#keys}║{$2}",
+            "text": "git version",
+            "format": "git {~12}"
+        },
+        {
+            "type": "font",
+            "key": "║{#red}│ {icon}  Interface │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "custom",
+            "key": "║{#red}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        },
+        */
+        // Informacion de sesion (Seccion magenta), descomentar si se quiere usar
+        {
+            "type": "custom",
+            "key": "║{#magenta}┌──────────────┬{$1}┐{#keys}║\u001b[36D",
+            "format": "{#bright_magenta} Uptime "
+        },
+        {
+            "type": "uptime",
+            "key": "║{#magenta}│ {icon}  Uptime    │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "users",
+            "myselfOnly": true,                               // Muestra el usuario actual
+            "keyIcon": "",
+            "key": "║{#magenta}│ {icon}  Login     │{$4}│{#keys}║{$2}"
+        },
+        {
+            "condition": {                                    // Módulo ocondicional: solo se muestra en sistemas que no son macOS.
+                "!system": "macOS"
+            },
+            "type": "disk",
+            "keyIcon": "",
+            "key": "║{#magenta}│ {icon}  OS Age    │{$4}│{#keys}║{$2}",
+            "folders": "/",                                   // Check root filesystem
+            "format": "{create-time:10} [{days} days]"        // Muestra fecha de creación y antigüedad en días
+        },
+        {
+            "condition": {                                    // Modulos solo para macOS
+                "system": "macOS"
+            },
+            "type": "disk",
+            "keyIcon": "",
+            "key": "║{#magenta}│ {icon}  OS Age    │{$4}│{#keys}║{$2}",
+            "folders": "/System/Volumes/VM",                 // Solución alternativa para APFS en macOS
+            "format": "{create-time:10} [{days} days]"
+        },
+        {
+            "type": "custom",
+            "key": "║{#magenta}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        },
+        {
+            "type": "custom",
+            "key": "╚═════════════════{$5}╝",                // Crea un borde al final
+            "format": ""
+        },
+
+        // End with color palette and line break
+        "break"                                             // Agrega una linea en blanco
+    ]
+}
+
