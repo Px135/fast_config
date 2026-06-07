@@ -60,8 +60,8 @@ Una vez ubicado en la carpeta bien ubicada debes clonar este repositorio con el 
 Accede a la carpeta del repositorio llamada **"fast_config"** para esto tines 2 opciones, la primera es dar click derecho dentro de la carpeta donde se ven todos los configs y presionar **"Abrir terminal aqui"** o ejecutar:
 
 ```bash
-    #Denuevo es un ejemplo, tu deberas poner el nombre de tu carpeta ubicada y la del repositorio
-    cd ~/Documentos/fast_config
+    #Deberas acceder a la carpeta del repositorio
+    cd fast_config
     
     #Esto solo es una comprobación de que estas en la carpeta correcta debes ver los archivos .jsonc, una carpeta llamada Img-fast y 2 scripts
     ls
