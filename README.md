@@ -74,7 +74,7 @@ Una vez comprobada la carpeta deberas dar permiso de ejecusion al archivo **inst
     #Si desconfias de los procesos el codigo es totalmente visible con nano o algun editor de texto
     
     #Comando para darle permiso de ejecusion con sudo
-    chmod +x instal.sh
+    chmod +x install.sh
 
     #Despues de ejecutar deberas ejecutar el install con el siguiente comando 
     ./install.sh
