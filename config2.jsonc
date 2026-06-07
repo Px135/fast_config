@@ -31,14 +31,14 @@
     */
 
     "logo": {
-        "source": "~/.config/fastfetch/Img-fast/2.png",               //Nombre o ruta del archivo del logo
+        "source": "${HOME}/.config/fastfetch/Img-fast/2.png",               //Nombre o ruta del archivo del logo
 
     /*
 
     /*
         ⚠ Nota: Lo unico que se debe cambiar/remplazar es "1.png" por la imagen que quieres que se muestre puedes cambiar la rutra por ejemplo: "/home/$USER/Imagenes/imagen.png" pero ⤵
         ↪ es bajo tu responsabilidad que pueda no llegar a mostrarse la imagen o que las rutas fallen, aun así no tengas miedo de hacerlo si quieres probar mover este codigo y en caso de ⤵
-        ↪ de tener un fallo la ruta original es: "/home/$USER/.config/fastfetch/Img-fast/1.png" siempre puedes volverla a copiar.
+        ↪ de tener un fallo la ruta original es: "${HOME}/.config/fastfetch/Img-fast/1.png" siempre puedes volverla a copiar.
 
     ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════  
     /*
