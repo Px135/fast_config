@@ -31,7 +31,7 @@
     */
 
     "logo": {
-        "source": "/home/$USER/.config/fastfetch/Img-fast/4.png",                  //Nombre o ruta del archivo del logo
+        "source": "~/.config/fastfetch/Img-fast/4.png",                  //Nombre o ruta del archivo del logo
 
     /*
 
