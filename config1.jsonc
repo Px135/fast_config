@@ -32,7 +32,7 @@
     */
 
     "logo": {
-        "source": "/home/$USER/.config/fastfetch/Img-fast/1.png",               //Nombre o ruta del archivo del logo
+        "source": "~/.config/fastfetch/Img-fast/1.png",               //Nombre o ruta del archivo del logo
 
     /*
         ⚠ Nota: Lo unico que se debe cambiar/remplazar es "1.png" por la imagen que quieres que se muestre puedes cambiar la rutra por ejemplo: "/home/$USER/Imagenes/imagen.png" pero ⤵
