@@ -35,7 +35,7 @@ Es necesaria para clonar el repositorio sino la tienes  ejecuta segun tu caso lo
 ```
 * Debes tener ubicado tu terminal como **konsole**, **kitty**,  **Ghostty** o la que tu ocupes de preferencia con un protocolo de imagenes (Recomendado: Kitty), junto su interprete como **zsh**, **bash**, **fish** o cualquier otra.
 
-### 2. Instalar fuentas (opcional... creo)
+### 2. Instalar fuentes (opcional... creo)
 Puedes instalar fuentes para tu terminal y asi darle mejor apariencia, pero realmente para lo que importan es para los iconos decorativos del mismo fastfetch, para esto recomiendo sin duda **[NerdFonts](https://www.nerdfonts.com/#home)** ya sera trabajo tuyo el instalarlo en tu terminal pero es realmente facil
 
 ---
