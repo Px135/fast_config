@@ -1,0 +1,271 @@
+{
+    //Config - Aldo
+    "logo": {
+        "type": "auto",
+        "source": "${HOME}/.config/fastfetch/Img-fast/6.png",
+        "height": 35,
+        "width": 60
+    },
+    "display": {
+        "separator": " "
+    },
+    "modules": [
+        // ────────── ASCII ART ──────────
+
+        /*
+        ⚠ Nota: El apartado de modulos ya se toco en los diferentes archivos configs anteriores por lo cual esto solo sera una breve explicacion  del ascii art. ⤵
+        ↪ Como se vio en los anteriores configs hay muchas maneras de pintar los modulos a traves de #key colors generales, codigo ANSI por ejemplo {#32} y ⤵
+        ↪ con OutputColors que hace referencia a los colores de salida pero aqui ocupamos hexadecimal por su facilidad de uso con un keyColor. ⤵
+        ↪ los cuadroes que se ven despues de la instruccion key es la composicion del ascii art separado por lineas.
+
+        Ejemplo:
+
+        si queremos hacer ascci art con una palabra o logo debemos separar cada linea de los caracteres que componen la palabra o logo 
+        y ponerlos en un key diferente, por ejemplo:
+
+                     ░██                                       ░██             1
+                                                               ░██             2
+         ░███████    ░██  ░███████  ░█████████████  ░████████  ░██  ░███████   3
+        ░██    ░██   ░██ ░██    ░██ ░██   ░██   ░██ ░██    ░██ ░██ ░██    ░██  4
+        ░█████████   ░██ ░█████████ ░██   ░██   ░██ ░██    ░██ ░██ ░██    ░██  5
+        ░██          ░██ ░██        ░██   ░██   ░██ ░███   ░██ ░██ ░██    ░██  6
+         ░███████    ░██  ░███████  ░██   ░██   ░██ ░██░█████  ░██  ░███████   7
+                     ░██                            ░██                        8
+                   ░███                             ░██                        9
+                                                                      
+
+        Aqui cada linea que compone el ascii art se encuentra separada por lineas que conforman todo el texto
+        Si se quisiera mostrar en la terminal se tendria que poner cada linea en un modulo diferente recordando la sintaxis de los modulos,
+        para esto debes respestra los espacios que se encuentren en cada linea si no quieres perder la forma del ascii art,
+        sin importar que parezcan inecesarios estos mismos se dibujaran en la terminal por lo que si los eliminas o agregas incorrectamente
+        el resultado final se vera afectado y no se mostrara correctamente el ascii art.
+        */
+        {
+            "type": "custom",
+            "key": " "
+        },
+        {
+            "type": "custom",
+            "key": "   ░███    ░██        ░██                            ░██████              ",
+            "keyColor": "#00A198"
+        },
+        {
+            "type": "custom",
+            "key": "  ░██░██   ░██        ░██                           ░██   ░██             ",
+            "keyColor": "#00958C"
+        },
+        {
+            "type": "custom",
+            "key": " ░██  ░██  ░██  ░████████  ░███████                ░██     ░██  ░███████  ",
+            "keyColor": "#009499"
+        },
+        {
+            "type": "custom",
+            "key": "░█████████ ░██ ░██    ░██ ░██    ░██    ░██████    ░██     ░██ ░██        ",
+            "keyColor": "#009FB5"
+        },
+        {
+            "type": "custom",
+            "key": "░██    ░██ ░██ ░██    ░██ ░██    ░██               ░██     ░██  ░███████  ",
+            "keyColor": "#007298"
+        },
+        {
+            "type": "custom",
+            "key": "░██    ░██ ░██ ░██   ░███ ░██    ░██                ░██   ░██         ░██ ",
+            "keyColor": "#008EBF"
+        },
+        {
+            "type": "custom",
+            "key": "░██    ░██ ░██  ░█████░██  ░███████                  ░██████    ░███████  ",
+            "keyColor": "#005DA1"
+        },
+
+        // ────────── Basico ──────────
+        {
+            "type": "custom",
+            "key": " "
+        },
+        {
+            "type": "custom",
+            "key": "               Basico",
+            "keyColor": "#94AE57"
+        },
+        {
+            "type": "custom",
+            "key": "╔════════════╦════════════════════════════════╗",
+            "keyColor": "#3CA00C"
+        },
+        {
+            "type": "title",
+            "key": "║  Usuario  ║",
+            "format": "{host-name}  {#2}[{home-dir}]  {#0}        \u001b[38;2;60;160;12m║\u001b[0m",  //⤵
+            // Esta es una secuencia de color en formato RGB, si quieres modificar lee la siguiente nota que te explicara como hacerlo correctamente sin afectar el resto del formato.
+            /*
+
+            ⚠ Nota: Este formato ocupa RGB unicamente y se debe modificar unicamente 3 valores de los 5 que se muestran siendo estos los valores siguientes a 38;2;⤵
+            ↪ puede ser confuso pero en un momento lo aclaro con un ejemplo, explicando la sintaxisi "\ub001b[38;2;R;G;Bm" es la que abre la secuencia de 24 bits ⤵
+            ↪ y "\u001b[0m" es la que la cierra, por lo que los valores de R,G y B son los que se encuentran entre ellos, estos no influyen en el resto de la sintaxis ⤵
+            ↪ por lo que se pueden cambiar sin afectar el resto del formato. mientres se respete la sintaxis de apertura y cierre de la secuencia de color.
+
+            Ejemplo:
+            1.- Iniciamos con: \u001b[38;2;41;173;89m║\u001b[0m
+            ↪ lo que nos da un color verde especificamente del caracter "║" que es parte del marco decorativo de la tabla. ⤵
+            ↪ Si se quiere cambiar el color a un tono de azul, se puede modificar la secuencia de color de la siguiente manera: ⤵
+            ↪ iniciamos con la sintaxis de apertura "\u001b[38;2;" la cual independientemente del color que se quiera poner siempre es la misma, ⤵
+            ↪ despues escribimos el color en la siguiente sintaxis: R;G;Bm, la m es importante ya que indica el final de la secuencia de color, ⤵
+            ↪ por lo que si se quiere un color azul puro, se puede poner: 0;0;255m, quedando la secuencia completa de la siguiente manera: ⤵
+            ↪ "\u001b[38;2;0;0;255m" ⤵
+            ↪ donde 0 es el valor de rojo, 0 es el valor de verde y 255 es el valor de azul, lo que dará como resultado un color azul puro.
+
+            2.- Frente a la secuencia de color, se coloca el caracter que se quiere colorear o cambiar de color, en este caso el caracter "║" ⤵
+            ↪ esta parte es importnte no dejar espacios entre la secuencia de color y el carcater que se quiere colorear, ya quue si se deja un espacio ⤵
+            ↪ el color no se apliacra al caracter sino mas bien al espacio.
+
+            Manera correcta ( ˶ˆᗜˆ˵ ): "\u001b[38;2;0;0;255m║"
+            Manera incorrecta ૮₍˶Ó﹏Ò ⑅₎ა : "\u001b[38;2;0;0;255m ║" (el espacio antes del caracter hace que)
+
+            3.- Finalmente se cierra la secuencia de color con "\u001b[0m" que es la indicación de que se termina la secuencia de color ⤵
+            ↪ separando la instruccion \u001b es la indicación de que se va a iniciar una secuencia de control, ⤵
+            ↪ el [0m indica que se va a cerrar la secuencia de color y se va a volver al color predeterminado de la terminal generalmente siendo el color blanco, ⤵
+            ↪ por lo que juntando todo esto tendríamos la siguiente sintaxis completa para cambiar el color del caracter "║" a azul puro:
+
+            Resultado final: "\u001b[38;2;0;0;255m║\u001b[0m" lo que nos dará un caracter "║" de color azul puro.
+            */
+
+            "keyColor": "#3CA00C"
+        },
+        {
+            "type": "custom",
+            "key": "╠════════════╬════════════════════════════════╣",
+            "keyColor": "#3A9B42"
+        },
+        {
+            "type": "datetime",
+            "key": "║  Hora     ║",
+            "format": "{hour-pretty}:{minute-pretty}:{second-pretty} {#2}[UTC{offset-from-utc}]            {#0}\u001b[38;2;58;155;66m║\u001b[0m",
+            "keyColor": "#3A9B42"
+        },
+        {
+            "type": "custom",
+            "key": "╠════════════╬════════════════════════════════╣",
+            "keyColor": "#29AD59"
+        },
+        {
+            "type": "os",
+            "key": "║  Sistema  ║",
+            "format": "{pretty-name} {#2}v{version} {arch}{#0}        \u001b[38;2;41;173;89m║\u001b[0m", 
+            "keyColor": "#29AD59",
+            "disabled": [
+                "apk"
+            ],
+            "combined": false
+        },
+        {
+            "type": "custom",
+            "key": "╚════════════╩════════════════════════════════╝",
+            "keyColor": "#29AD59"
+        },
+
+        // ────────── Especificaciones ──────────
+        {
+            "type": "custom",
+            "key": "               Especificaciones",
+            "keyColor": "#94AE57"
+        },
+        {
+            "type": "custom",
+            "key": "╔════════════╦════════════════════════════════╗",
+            "keyColor": "#810000"
+        },
+        {
+            "type": "cpu",
+            "key": "║  CPU      ║",
+            "keyColor": "#810000",
+            "format": "{name} {#2}{freq-max}{#0}      \u001b[38;2;129;0;0m║\u001b[0m"
+        },
+        {
+            "type": "custom",
+            "key": "╠════════════╬════════════════════════════════╣",
+            "keyColor": "#8B0000"
+        },
+        {
+            "type": "memory",
+            "key": "║  RAM      ║",
+            "keyColor": "#8B0000",
+            "format": "{used} / {total}           \u001b[38;2;142;0;0m║\u001b[0m"
+        },
+        {
+            "type": "custom",
+            "key": "╠════════════╬════════════════════════════════╣",
+            "keyColor": "#8E0000"
+        },
+        {
+            "type": "gpu",
+            "key": "║  GPU      ║",
+            "keyColor": "#8E0000",
+            "format": "{name} {#2}[{driver}] {#0}   \u001b[38;2;142;0;0m║\u001b[0m"
+        },
+        {
+            "type": "custom",
+            "key": "╠════════════╬════════════════════════════════╣",
+            "keyColor": "#8E0000"
+        },
+        {
+            "type": "disk",
+            "key": "║  Disco    ║",
+            "keyColor": "#8E0000",
+            "format": "{size-used} / {size-total} {size-percentage}      \u001b[38;2;142;0;0m║\u001b[0m",
+            "combined": false
+        },
+        {
+            "type": "custom",
+            "key": "╚════════════╩════════════════════════════════╝",
+            "keyColor": "#8E0000"
+        },
+
+        // ────────── Terminal ──────────
+        {
+            "type": "custom",
+            "key": "               Terminal",
+            "keyColor": "#94AE57"
+        },
+        {
+            "type": "custom",
+            "key": "╔════════════╦════════════════════════════════╗",
+            "keyColor": "#92E0C8"
+        },
+        {
+            "type": "terminal",
+            "key": "║  Terminal ║",
+            "format": "{pretty-name} {#2}[{version}]                 {#0}\u001b[38;2;146;224;200m║\u001b[0m",
+            "keyColor": "#92E0C8"
+        },
+        {
+            "type": "custom",
+            "key": "╠════════════╬════════════════════════════════╣",
+            "keyColor": "#38BB9A"
+        },
+        {
+            "type": "shell",
+            "key": "║  Shell    ║",
+            "format": "{pretty-name} {#2}[{version}]                    {#0}\u001b[38;2;56;187;154m║\u001b[0m",
+            "keyColor": "#38BB9A"
+        },
+        {
+            "type": "custom",
+            "key": "╠════════════╬════════════════════════════════╣",
+            "keyColor": "#008F71"
+        },
+        {
+            "type": "terminalfont",
+            "key": "║ 󰘎 Fuente   ║",
+            "format": "{name} {#2}[{size}]              {#0}\u001b[38;2;0;143;113m║\u001b[0m",
+            "keyColor": "#008F71"
+        },
+        {
+            "type": "custom",
+            "key": "╚════════════╩════════════════════════════════╝",
+            "keyColor": "#008F71"
+        }
+    ]
+} 
