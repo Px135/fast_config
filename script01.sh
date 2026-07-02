@@ -6,7 +6,7 @@ ACTIVE_CONFIG="$DIR_PADRE/config_run.jsonc"
 STATE="$DIR_PADRE/.fastfetch_state"
 
 # ────────── MODIFICACIÓN DE VALORES (NÚMEROS) ──────────
-TOTAL_CONFIGS=5  # Cambia este número si agregas config5, config6, etc.
+TOTAL_CONFIGS=6  # Cambia este número si agregas config5, config6, etc.
 # ───────────────────────────────────────────────────────
 
 # ══════════════════════════════Verificaciones Iniciales (Primera Ejecución)═══════════════════════════════════
